@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ board }} - pyChan</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div class="pc-topbar">
+            <div class="pc-topbar-nav">
+                {% for board_short in board_list %}
+                    <ur>
+                        <li><a href="{% url 'boardView' board_short %}">{{ board_short }}</a> /</li>
+                    </ur>
+                {% endfor %}
+            </div>
+            <div class="pc-topbar-banner">
+                <img src="{{ board.banner.url }}"/>
+                <h1>{{ board }}</h1>
+            </div>
+            {% block topbar %}{% endblock %}
+        </div>
+        <hr/>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="pc-footer">
+            <footer>pyChan 2021</footer>
+        </div>
+    </body>
+</html>

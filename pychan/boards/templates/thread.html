@@ -1,19 +1,27 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ board_name }}</title>
-        <!--<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">-->
-        <meta charset="utf-8" />
-    </head>
-    <body>
-        <div class="content">
-            {% for post in post_list%}
+{% extends "chanCore.html" %}
+{% block topbar %}
+{% endblock %}
+{% block content %}
+    <div class="content">
+        {% for post in post_list%}
+        <div class="pc-post-wrapper">
             <div class="pc-post">
-                Anonymous {{post.timestamp}} No. {{post.id}}<br/>
-                {{ post.message }}
+                <div class="pc-post-info">
+                    {% if post.image %}
+                        <a href="{{ post.image.url }}"/>file</a>
+                    {% endif %}
+                    <b>Anonymous</b> {{post.timestamp}} No. {{post.id}}<br/>
+                </div>
+                {% if post.image %}
+                    <div class="pc-post-image">
+                        <img src="{{ post.image.url }}"/>
+                    </div>
+                {% endif %}
+                <div class="pc-post-message">
+                    {{ post.message }}
+                </div>
             </div>
-            {% endfor %}
         </div>
-    </body>
-</html>
+        {% endfor %}
+    </div>
+{% endblock %}

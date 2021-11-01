@@ -1,27 +1,19 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ board_name }}</title>
-        <!--<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">-->
-        <meta charset="utf-8" />
-    </head>
-    <body>
-        <div class="content">
-            <table>
-                <tr>
-                    <th>id</td>
-                    <th>timestamp</td>
-                    <th>message</td>
-                </tr>
-                {% for post in post_list %} 
-                    <tr>
-                        <td><a href="./{{post.id}}">#{{ post.id }}</></td>
-                        <td>{{ post.timestamp }}</td>
-                        <td>{{ post.message }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
+{% extends "chanCore.html" %}
+{% block topbar %}
+{% endblock %}
+{% block content %}
+    {% for post in post_list %}
+        <div class="pc-thread-paged">
+            <div class="pc-thread-info">
+                <b>Anonymous</b> {{ post.timestamp }} No. <a href="./{{post.id}}">{{ post.id }}</a>
+            </div>
+            <div class="pc-thread-image">
+                <img src="{{ post.image.url }}"/>
+            </div>
+            <div class="pc-thread-message">
+                {{ post.message }}
+            </div>
         </div>
-    </body>
-</html>
+        <hr/>
+    {% endfor %}
+{% endblock %}
