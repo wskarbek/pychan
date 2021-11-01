@@ -1,0 +1,26 @@
+{% extends "opPanel.html" %}
+{% block sidebar %}
+    <ur>
+        <li></li>
+    </ur>
+{% endblock %}
+{% block panel %}
+    <a href="{% url 'boardCreate' %}">Add</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Short</th>
+            <th></th>
+        </tr>
+        {% for board in board_list %}
+            <tr>
+                <td>{{ board.name }}</td>
+                <td>{{ board.short }}</td>
+                <td>
+                    <a href="{% url 'boardUpdate' board.id %}">Edit</a>
+                    <a href="{% url 'boardDelete' board.id %}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

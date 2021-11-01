@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OP Panel</title>
+        <!--<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">-->
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div class="content">
+            <div class="sidebar">
+                {% block sidebar %}test{% endblock %}
+            </div>
+            <div class="panel">
+                {% block panel %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
