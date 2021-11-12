@@ -12,6 +12,33 @@ a:link, a:visited {
     color: rgb(187, 192, 211);
 }
 
+.pc-index-logo {
+    height: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+.pc-index-logo img {
+    width: auto;
+    height: 150px;
+    padding: 30px 0 125px 0;
+    -webkit-filter: drop-shadow(0px 0px 24px black);
+    -moz-filter: drop-shadow(0px 0px 24px black);
+    filter: drop-shadow(0px 0px 24px black);
+}
+
+.pc-index-boards {
+    margin: auto;
+}
+
+.pc-index-boards tr {
+    border: 1px solid #1b3b55;
+}
+
+.pc-index-boards tr:first-child td {
+    background-color: #1b3b55
+}
+
 .pc-topbar {
     text-align: center;
 }
@@ -58,14 +85,14 @@ a:link, a:visited {
 }
 
 .pc-thread-image img {
-    max-height: 150px;
+    max-height: 200px;
 }
 
-.pc-post-wrappe {
+.pc-post-wrapper {
     width: 100%;
 }
 
-.pc-post {
+.pc-post, .pc-thread-paged {
     min-height: 230px;
     min-width: 500px;
     background-color: #2a5980;
@@ -73,16 +100,16 @@ a:link, a:visited {
     display: inline-block;
 }
 
-.pc-post-info {
-    margin: 2px 0 0 2px;
+.pc-post-info, .pc-thread-info {
+    margin: 2px 3px 2px 3px;
 }
 
-.pc-post-image {
+.pc-post-image, .pc-thread-image {
     float: left;
     margin: 5px;
 }
 
-.pc-post-image img {
+.pc-post-image img, .pc-thread-image img {
     max-height: 200px;
     max-width: auto;
 }

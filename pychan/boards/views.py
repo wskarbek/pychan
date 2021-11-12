@@ -56,7 +56,7 @@ class BoardListView(ListView):
 class BoardCreateView(BoardEditMixin, CreateView):
     model = Board
     template_name = "objCreateUpdate.html"
-    fields = ['name', 'short', 'banner', 'max_threads', 'nsfw']
+    fields = '__all__' 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -66,8 +66,8 @@ class BoardCreateView(BoardEditMixin, CreateView):
 class BoardUpdateView(BoardEditMixin, UpdateView):
     model = Board
     template_name = "objCreateUpdate.html"
-    fields = ['name', 'short', 'banner', 'max_threads', 'nsfw']
+    fields = '__all__' 
 
 class BoardDeleteView(BoardEditMixin, DeleteView):
     model = Board
-    fields = ['name', 'short', 'banner', 'max_threads', 'nsfw']
+    fields = '__all__' 

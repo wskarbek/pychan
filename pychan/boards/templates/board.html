@@ -3,17 +3,27 @@
 {% endblock %}
 {% block content %}
     {% for post in post_list %}
-        <div class="pc-thread-paged">
-            <div class="pc-thread-info">
-                <b>Anonymous</b> {{ post.timestamp }} No. <a href="./{{post.id}}">{{ post.id }}</a>
+        <a href="./{{post.id}}">
+            <div class="pc-thread-paged">
+                <div class="pc-thread-info">
+                    <!--
+                        for some reason this gliches the thread link?
+                    {% if post.image %}
+                        <a href="{{ post.image.url }}">file</a>
+                    {% endif %}
+                    -->
+                    <b>0xAnonymous</b> {{ post.timestamp }}({{ post.timestamp|date:"l" }}) No. {{ post.id }}
+                </div>
+                {% if post.image %}
+                    <div class="pc-thread-image">
+                        <img src="{{ post.image.url }}"/>
+                    </div>
+                {% endif %}
+                <div class="pc-thread-message">
+                    {{ post.message }}
+                </div>
             </div>
-            <div class="pc-thread-image">
-                <img src="{{ post.image.url }}"/>
-            </div>
-            <div class="pc-thread-message">
-                {{ post.message }}
-            </div>
-        </div>
-        <hr/>
+            <hr/>
+        </a>
     {% endfor %}
 {% endblock %}

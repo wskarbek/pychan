@@ -3,6 +3,10 @@
 {% endblock %}
 {% block content %}
     <div class="content">
+        <div class="pc-post-menu">
+            <!-- menu fajne--> 
+        </div>
+        <hr>
         {% for post in post_list%}
         <div class="pc-post-wrapper">
             <div class="pc-post">
@@ -10,7 +14,9 @@
                     {% if post.image %}
                         <a href="{{ post.image.url }}"/>file</a>
                     {% endif %}
-                    <b>Anonymous</b> {{post.timestamp}} No. {{post.id}}<br/>
+                    <b>0xAnonymous</b> {{post.timestamp}}({{ post.timestamp|date:"l" }}) No. {{post.id}}
+                    <!-- &nbsp;&nbsp;<a href="/">Send Puch</a>&nbsp;<a href="/">Vote Purge</a>-->
+                    <br/>
                 </div>
                 {% if post.image %}
                     <div class="pc-post-image">
