@@ -17,7 +17,9 @@
                 {% endfor %}
             </div>
             <div class="pc-topbar-banner">
-                <img src="{{ board.banner.url }}"/>
+                {% if board.banner %}
+                    <img src="{{ board.banner.url }}"/>
+                {% endif %}
                 <h1>{{ board }}</h1>
             </div>
             {% block topbar %}{% endblock %}

@@ -1,6 +1,7 @@
+from django.http.response import HttpResponseRedirect
 from django.urls import reverse
-from django.http import HttpResponse
 from django.db.models import Q
+from django.urls.base import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from pychan.mixins import ChanCoreView
 from .models import Board, Post
@@ -40,7 +41,12 @@ class PostCreateView(CreateView):
     def form_valid(self, form):
         thread = Post.objects.get(pk=self.kwargs['pk'])
         form.instance.thread = thread
-        return super(PostCreateView, self).form_valid(form)
+        form.save()
+        return HttpResponseRedirect(self.get_success_url(**self.kwargs))
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('thread', kwargs={'short': kwargs['short'], 'pk': kwargs['pk']})
+
 
 class BoardEditMixin(object):
     def get_success_url(self):

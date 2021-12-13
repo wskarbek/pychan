@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>pychan</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div class="pc-index">
+            <div class="pc-index-logo">
+                <img src="{% static 'assets/pychan.png' %}" alt="pychan"/>
+            </div>
+            <table class="pc-index-boards">
+                <tr>
+                    <th>Boards</th>
+                </tr>
+                {% for board in board_list %}
+                    <tr>
+                        <td><a href="/{{ board.short }}">{{ board.name }}<a/></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>

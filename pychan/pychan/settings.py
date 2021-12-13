@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pychan',
-    'boards.apps.BoardsConfig'
+    'boards.apps.BoardsConfig',
+    'dex.apps.DexConfig'
 ]
 
 MIDDLEWARE = [

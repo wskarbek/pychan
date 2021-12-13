@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>pychan dex</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div class="pc-dex">
+            {% if messages %}
+                <ul class="messages" style="text-overflow: wrap">
+                    {% for message in messages %}
+                        <li style="text-overflow: wrap"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="pc-dex-send">
+                <form action='' method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

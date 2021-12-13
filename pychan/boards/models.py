@@ -1,5 +1,7 @@
 from django.db import models
 
+import requests
+
 class Board(models.Model):
     name = models.CharField(max_length=30)
     short = models.CharField(max_length=5)
@@ -25,8 +27,18 @@ class Board(models.Model):
 
 
 class Post(models.Model):
-    board = models.ForeignKey(Board, on_delete=models.CASCADE, null=True, blank=True)
     thread = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to=f'threads/images/', null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=True, auto_now_add=False)
     message = models.CharField(max_length=512)
+
+    def save(self, *args, **kwargs):
+        super(Post, self).save(*args, **kwargs)
+        data = {
+            'thread': self.thread.id,
+            'image': 'NOT_IMPLEMENTED',
+            'timestamp': str(self.timestamp),
+            'message': self.message
+        }
+        req = requests.post('http://localhost:5000/post/', json=data)
+
