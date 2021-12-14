@@ -11,5 +11,13 @@ class Transaction:
     def __repr__(self):
         return str(self.__dict__)
 
+    def toJSON(self):
+        return {
+            "sender": self.sender,
+            "recipient": self.recipient,
+            "amount": self.amount,
+            "signature": self.signature
+        }
+
     def to_ordered_dict(self):
         return OrderedDict([('sender', self.sender), ('recipient', self.recipient), ('amount', self.amount)])

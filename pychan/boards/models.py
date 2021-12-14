@@ -27,6 +27,7 @@ class Board(models.Model):
 
 
 class Post(models.Model):
+    board = models.ForeignKey(Board, on_delete=models.CASCADE)
     thread = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to=f'threads/images/', null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=True, auto_now_add=False)

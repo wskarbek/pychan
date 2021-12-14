@@ -22,6 +22,7 @@ from .views import IndexView
 
 urlpatterns = [
     path('dex/', include('dex.urls')),
+    path('explorer/', include('explorer.urls')),
     path('boards/', include('boards.urls')),
     path('', IndexView.as_view(), name='index')
 ]

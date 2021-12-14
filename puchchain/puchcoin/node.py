@@ -61,6 +61,12 @@ def add_post():
     )
     return "cope"
 
+@app.route('/chain/', methods=['GET'])
+def get_chain():
+    return {
+        "blockchain": [ block.toJSON() for block in blockchain.chain ]
+    }
+
 @app.route('/chain/mine', methods=['POST'])
 def mine_block():
     blockchain.mine_block()

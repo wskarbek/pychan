@@ -11,5 +11,14 @@ class Post:
     def __repr__(self):
         return str(self.__dict__)
 
+    def toJSON(self):
+        return {
+            "thread": self.thread,
+            "image": self.image,
+            "timestamp": self.timestamp,
+            "message": self.message,
+            "signature": self.signature
+        }
+
     def to_ordered_dict(self):
         return OrderedDict([('thread', self.thread), ('timestamp', self.timestamp), ('message', self.message)])

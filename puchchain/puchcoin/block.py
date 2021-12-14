@@ -15,6 +15,16 @@ class Block:
         return 'BLOCK: {}, HASH: {}, PROOF: {}, TXS: {}, POSTS: {}'\
             .format(self.index, self.previous_hash, self.proof, self.txs, self.posts)
 
+    def toJSON(self):
+        return {
+            "index": self.index,
+            "previous_hash": self.previous_hash,
+            "timestamp": self.timestamp,
+            "txs": [ tx.toJSON() for tx in self.txs ],
+            "posts": [ post.toJSON() for post in self.posts ],
+            "proof": self.proof
+        }
+
     @staticmethod
     def hash_string(string):
         return hashlib.sha256(string).hexdigest()

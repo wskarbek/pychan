@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pychan',
     'boards.apps.BoardsConfig',
-    'dex.apps.DexConfig'
+    'dex.apps.DexConfig',
+    'explorer.apps.ExplorerConfig'
 ]
 
 MIDDLEWARE = [
